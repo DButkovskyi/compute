@@ -130,3 +130,10 @@ export const extendSingleVolumeSize = {
   data: null,
   error: null,
 };
+
+export const getUsage = {
+  isLoading: false,
+  isSuccessful: false,
+  data: [],
+  error: null,
+};

@@ -59,7 +59,7 @@ export default function Register() {
   }, [registerState, dispatch, router]);
   return (
     <Layout title="Register">
-      <div className="max-w-6xl mx-auto px-8 mb-10 mt-24">
+      <div className="max-w-6xl mx-auto px-8 mb-10 mt-24 h-screen">
         <form className="shadow-md bg-gray-50 rounded-md p-7">
           <h1 className="mb-4 text-2xl font-bold">Create your account</h1>
           <Formik

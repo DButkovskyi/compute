@@ -31,10 +31,12 @@ export default function SingleVolume() {
   );
   const [, setExtendSingleVolumeSize] = useState([]);
   const [size, setSize] = useState('');
-  const [open, setOpen] = useState(false);
-
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  const [openSize, setOpenSize] = useState(false);
+  const onOpenSizeModal = () => setOpenSize(true);
+  const onCloseSizeModal = () => setOpenSize(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const onOpenDeleteModal = () => setOpenDelete(true);
+  const onCloseDeleteModal = () => setOpenDelete(false);
 
   const {
     query: { id },
@@ -202,14 +204,14 @@ export default function SingleVolume() {
                 <button
                   type="button"
                   className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                  onClick={onOpenModal}
+                  onClick={onOpenSizeModal}
                 >
                   Extend Size
                 </button>
                 <button
                   type="button"
                   className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                  onClick={deleteVolume}
+                  onClick={onOpenDeleteModal}
                 >
                   Delete
                 </button>
@@ -219,7 +221,7 @@ export default function SingleVolume() {
         )}
       </div>
 
-      <Modal open={open} onClose={onCloseModal} center>
+      <Modal open={openSize} onClose={onCloseSizeModal} center>
         <h1 className="pt-10  pb-5 font-extrabold">
           Extend Volume&apos;s Size
         </h1>
@@ -238,7 +240,7 @@ export default function SingleVolume() {
           <button
             type="submit"
             className="border-gray-400 text-black hover:bg-gray-400 px-3 py-2 rounded-md bg-gray-300 text-xs lg:text-base font-medium"
-            onClick={onCloseModal}
+            onClick={onCloseSizeModal}
           >
             Close
           </button>
@@ -247,9 +249,35 @@ export default function SingleVolume() {
             className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
             onClick={() => {
               extendSize();
-              onCloseModal();
+              onCloseSizeModal();
             }}
             disabled={size === ''}
+          >
+            Proceed
+          </button>
+        </footer>
+      </Modal>
+      <Modal open={openDelete} onClose={onCloseDeleteModal} center>
+        <h1 className="pt-10  pb-5 font-extrabold">
+          Delete Volume
+        </h1>
+        <p>Are you sure you want to delete this volume?</p>
+        <footer className="float-right mt-6 space-x-6">
+          <button
+            type="submit"
+            className="border-gray-400 text-black hover:bg-gray-400 px-3 py-2 rounded-md bg-gray-300 text-xs lg:text-base font-medium"
+            onClick={onCloseDeleteModal}
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
+            onClick={() => {
+              deleteVolume();
+              onCloseDeleteModal();
+            }}
+            
           >
             Proceed
           </button>

@@ -11,13 +11,13 @@ export default function Layout({ title, children }) {
   return (
     <div ref={topRef} className="h-full">
       <Head>
-        <title>{title ? 'COMPUTE | ' + title : 'COMPUTE '}</title>
+        <title>{title ? 'IridiumGPU | ' + title : 'IridiumGPU '}</title>
         <meta name="description" content="Cloud GPU" />
       </Head>
 
       <div className="w-full overlay px-4 md:px-10 grid z-50 grid-cols-2 h-auto md:h-16 pt-5 md:pt-0 justify-between items-center bg-secondary text-secondary-light fixed top-0">
         <div className="flex space-x-2 pb-5 font-bold md:pb-0">
-          <h1>COMPUTE</h1>
+          <h1>IridiumGPU</h1>
           <div className="h-2 w-2 rounded-full bg-secondary-light"></div>
         </div>
 
@@ -172,7 +172,7 @@ export default function Layout({ title, children }) {
         </div>
         <p className="text-xs leading-9 tracking-wide text-gray-200 font-thin">
           &copy; {new Date().toLocaleDateString('en-us', { year: 'numeric' })}{' '}
-          COMPUTE, ALL RIGHTS RESERVED.
+          IridiumGPU, ALL RIGHTS RESERVED.
         </p>
       </footer>
     </div>

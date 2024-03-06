@@ -59,7 +59,7 @@ export default function Storage() {
         ) : (
           <>
             <h1 className="mb-8 text-2xl font-bold">Volumes</h1>
-            <div className='grid justify-end mb-6 w-full flex-wrap'>
+            <div className="grid justify-end mb-6 w-full flex-wrap">
               <Link
                 className="w-fit border-black text-white hover:bg-black hover:cursor-pointer px-2 py-1 rounded-md bg-zinc-900 text-sm font-medium"
                 href="/create-volume"
@@ -67,15 +67,18 @@ export default function Storage() {
                 CREATE VOLUME
               </Link>
             </div>
-            <div className="text-xs lg:text-base flex flex-wrap space-x-8">
+            <div className="text-xs lg:text-base grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
               {volumes?.images?.volumes.map((data, i) => (
                 <div
                   key={i}
-                  className="shadow-md bg-gray-50 rounded-md w-fit p-7 mb-8 text-center grid gap-4"
+                  className="shadow-md mr-7 bg-gray-50 rounded-md p-7 mb-8 text-center grid gap-4"
                 >
-                  <p className="text-xl">{data.name}</p>
+                  <div className="w-full flex flex-wrap items-center justify-between">
+                    <p className="font-bold">Name</p>
+                    <p>{data.name}</p>
+                  </div>
                   <a
-                    className="border-black text-white hover:bg-black hover:cursor-pointer px-2 py-1 rounded-md bg-zinc-900 text-sm font-medium"
+                    className="w-fit border-black text-white hover:bg-black hover:cursor-pointer px-1 py-1 w-14 rounded-md bg-zinc-900 text-xs font-medium"
                     onClick={() => sendProps(data.id)}
                   >
                     View

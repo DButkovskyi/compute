@@ -102,10 +102,10 @@ export default function Request() {
 
   return (
     <UserSidebar title="Request">
-      <div className="h-auto py-5 px-3 my-auto">
+      <div className="h-screen py-5 px-3 my-auto">
         <>
           <h1 className="mb-8 text-2xl font-bold">Request VM Creation</h1>
-          <form className="shadow-md bg-gray-50 rounded-md p-7 mb-8">
+          <form className="shadow-md bg-gray-50 rounded-md p-7 mb-8 w-full lg:w-3/4 xl:2/4 2xl:1/3">
             <Formik
               initialValues={{
                 name: '',

@@ -44,7 +44,7 @@ function UserSidebar({ title, children }) {
   return (
     <div>
       <Head>
-        <title>{title ? 'COMPUTE | ' + title : 'COMPUTE '}</title>
+        <title>{title ? 'IridiumGPU | ' + title : 'IridiumGPU '}</title>
         <meta name="description" content="Cloud GPU" />
       </Head>
       <div className="flex h-full">
@@ -122,7 +122,7 @@ function UserSidebar({ title, children }) {
                 Storage
               </MenuItem>
             </Link>
-            <Link href="/billing">
+            <Link href="/usage">
               <MenuItem
                 icon={
                   <Image
@@ -135,7 +135,7 @@ function UserSidebar({ title, children }) {
                 }
               >
                 {' '}
-                Billing
+                Usage
               </MenuItem>
             </Link>
             <SubMenu
@@ -278,7 +278,7 @@ function UserSidebar({ title, children }) {
             <p className="text-xs leading-9 tracking-wide text-gray-200 font-thin">
               &copy;{' '}
               {new Date().toLocaleDateString('en-us', { year: 'numeric' })}{' '}
-              COMPUTE, ALL RIGHTS RESERVED.
+              IridiumGPU, ALL RIGHTS RESERVED.
             </p>
           </footer>
         </main>

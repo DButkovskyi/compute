@@ -28,6 +28,8 @@ import {
 } from '@/store/actions/delete-single-server';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 export default function SingleServer() {
   const router = useRouter();
@@ -49,6 +51,21 @@ export default function SingleServer() {
 
   const deleteSingleServerState = useSelector((s) => s.deleteSingleServer);
   const [, setDeleteSingleServer] = useState([]);
+  const [openStart, setOpenStart] = useState(false);
+  const onOpenStartModal = () => setOpenStart(true);
+  const onCloseStartModal = () => setOpenStart(false);
+  const [openStop, setOpenStop] = useState(false);
+  const onOpenStopModal = () => setOpenStop(true);
+  const onCloseStopModal = () => setOpenStop(false);
+  const [openRebootSoft, setOpenRebootSoft] = useState(false);
+  const onOpenRebootSoftModal = () => setOpenRebootSoft(true);
+  const onCloseRebootSoftModal = () => setOpenRebootSoft(false);
+  const [openRebootHard, setOpenRebootHard] = useState(false);
+  const onOpenRebootHardModal = () => setOpenRebootHard(true);
+  const onCloseRebootHardModal = () => setOpenRebootHard(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const onOpenDeleteModal = () => setOpenDelete(true);
+  const onCloseDeleteModal = () => setOpenDelete(false);
 
   const {
     query: { id },
@@ -270,6 +287,8 @@ export default function SingleServer() {
       path: 'server.OS-EXT-AZ:availability_zone',
       displayName: 'Availability Zone',
     },
+    { path: 'server.status', displayName: 'Status' },
+    { path: 'server.addresses.External[0].addr', displayName: 'IP Address' },
     { path: 'server.OS-EXT-STS:vm_state', displayName: 'VM State' },
     {
       path: 'server.addresses.External[0].addr',
@@ -344,35 +363,35 @@ export default function SingleServer() {
                 <button
                   type="button"
                   className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                  onClick={start}
+                  onClick={onOpenStartModal}
                 >
                   Start
                 </button>
                 <button
                   type="button"
                   className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                  onClick={stop}
+                  onClick={onOpenStopModal}
                 >
                   Stop
                 </button>
                 <button
                   type="button"
                   className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                  onClick={rebootSoft}
+                  onClick={onOpenRebootSoftModal}
                 >
                   Reboot Soft
                 </button>
                 <button
                   type="button"
                   className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                  onClick={rebootHard}
+                  onClick={onOpenRebootHardModal}
                 >
                   Reboot Hard
                 </button>
                 <button
                   type="button"
                   className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                  onClick={deleteServer}
+                  onClick={onOpenDeleteModal}
                 >
                   Delete
                 </button>
@@ -381,6 +400,121 @@ export default function SingleServer() {
           </>
         )}
       </div>
+      <Modal open={openStart} onClose={onCloseStartModal} center>
+        <h1 className="pt-10  pb-5 font-extrabold">Start Server</h1>
+        <p>Are you sure you want to start this server?</p>
+        <footer className="float-right mt-6 space-x-6">
+          <button
+            type="submit"
+            className="border-gray-400 text-black hover:bg-gray-400 px-3 py-2 rounded-md bg-gray-300 text-xs lg:text-base font-medium"
+            onClick={onCloseStartModal}
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
+            onClick={() => {
+              start();
+              onCloseStartModal();
+            }}
+          >
+            Proceed
+          </button>
+        </footer>
+      </Modal>
+      <Modal open={openStop} onClose={onCloseStopModal} center>
+        <h1 className="pt-10  pb-5 font-extrabold">Stop Server</h1>
+        <p>Are you sure you want to stop this server?</p>
+        <footer className="float-right mt-6 space-x-6">
+          <button
+            type="submit"
+            className="border-gray-400 text-black hover:bg-gray-400 px-3 py-2 rounded-md bg-gray-300 text-xs lg:text-base font-medium"
+            onClick={onCloseStopModal}
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
+            onClick={() => {
+              stop();
+              onCloseStopModal();
+            }}
+          >
+            Proceed
+          </button>
+        </footer>
+      </Modal>
+      <Modal open={openRebootSoft} onClose={onCloseRebootSoftModal} center>
+        <h1 className="pt-10  pb-5 font-extrabold">Reboot Soft Server</h1>
+        <p>Are you sure you want to reboot this server soft?</p>
+        <footer className="float-right mt-6 space-x-6">
+          <button
+            type="submit"
+            className="border-gray-400 text-black hover:bg-gray-400 px-3 py-2 rounded-md bg-gray-300 text-xs lg:text-base font-medium"
+            onClick={onCloseRebootSoftModal}
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
+            onClick={() => {
+              rebootSoft();
+              onCloseRebootSoftModal();
+            }}
+          >
+            Proceed
+          </button>
+        </footer>
+      </Modal>
+      <Modal open={openRebootHard} onClose={onCloseRebootHardModal} center>
+        <h1 className="pt-10  pb-5 font-extrabold">Reboot Hard Server</h1>
+        <p>Are you sure you want to reboot this server hard?</p>
+        <footer className="float-right mt-6 space-x-6">
+          <button
+            type="submit"
+            className="border-gray-400 text-black hover:bg-gray-400 px-3 py-2 rounded-md bg-gray-300 text-xs lg:text-base font-medium"
+            onClick={onCloseRebootHardModal}
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
+            onClick={() => {
+              rebootHard();
+              onCloseRebootHardModal();
+            }}
+          >
+            Proceed
+          </button>
+        </footer>
+      </Modal>
+      <Modal open={openDelete} onClose={onCloseDeleteModal} center>
+        <h1 className="pt-10  pb-5 font-extrabold">Delete Server</h1>
+        <p>Are you sure you want to delete this server?</p>
+        <footer className="float-right mt-6 space-x-6">
+          <button
+            type="submit"
+            className="border-gray-400 text-black hover:bg-gray-400 px-3 py-2 rounded-md bg-gray-300 text-xs lg:text-base font-medium"
+            onClick={onCloseDeleteModal}
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
+            onClick={() => {
+              deleteServer();
+              onCloseDeleteModal();
+            }}
+          >
+            Proceed
+          </button>
+        </footer>
+      </Modal>
       <ToastContainer
         position="top-center"
         autoClose={3000}

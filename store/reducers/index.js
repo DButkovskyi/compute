@@ -18,6 +18,7 @@ import getVolumes from './get-volumes';
 import getSingleVolume from './get-single-volume';
 import deleteSingleVolume from './delete-single-volume';
 import extendSingleVolumeSize from './extend-single-volume-size';
+import getUsage from './get-usage';
 
 const baseReducers = combineReducers({
   register,
@@ -38,7 +39,8 @@ const baseReducers = combineReducers({
   getVolumes,
   getSingleVolume,
   deleteSingleVolume,
-  extendSingleVolumeSize
+  extendSingleVolumeSize,
+  getUsage,
 });
 
 export default baseReducers;
