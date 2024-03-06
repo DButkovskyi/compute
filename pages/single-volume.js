@@ -134,16 +134,10 @@ export default function SingleVolume() {
     { path: 'images.volume.name', displayName: 'Volume Name' },
     { path: 'images.volume.description', displayName: 'Description' },
     { path: 'images.volume.size', displayName: 'Size' },
-    {
-      path: 'images.volume.availability_zone',
-      displayName: 'Availability Zone',
-    },
+    { path: 'images.volume.availability_zone',displayName: 'Availability Zone' },
     { path: 'images.volume.status', displayName: 'Status' },
     { path: 'images.volume.volume_type', displayName: 'Volume Type' },
-    {
-      path: 'images.volume.os-vol-tenant-attr:tenant_id',
-      displayName: 'Tenant ID',
-    },
+    { path: 'images.volume.user_id',displayName: 'User ID' },
     { path: 'images.volume.created_at', displayName: 'Volume Created' },
   ];
 
