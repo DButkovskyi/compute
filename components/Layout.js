@@ -1,24 +1,25 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 export default function Layout({ title, children }) {
-  const topRef = useRef();
   const [show, setShow] = useState(false);
   const [menu, setMenu] = useState('open');
 
   return (
-    <div ref={topRef} className="h-full">
+    <div className="h-full">
       <Head>
         <title>{title ? 'IridiumGPU | ' + title : 'IridiumGPU '}</title>
         <meta name="description" content="Cloud GPU" />
+        <link rel="icon" href="/logo.png" />
       </Head>
 
       <div className="w-full overlay px-4 md:px-10 grid z-50 grid-cols-2 h-auto md:h-16 pt-5 md:pt-0 justify-between items-center bg-secondary text-secondary-light fixed top-0">
         <div className="flex space-x-2 pb-5 font-bold md:pb-0">
-          <h1>IridiumGPU</h1>
-          <div className="h-2 w-2 rounded-full bg-secondary-light"></div>
+          <Image src="/logo.png" alt="Logo" width={30} height={30} />
+          <h1 className="text-primary-dark">IridiumGPU</h1>
+          <div className="h-2 w-2 rounded-full bg-primary-dark"></div>
         </div>
 
         <ul className="hidden md:flex space-x-6 justify-self-end items-center">
@@ -170,7 +171,7 @@ export default function Layout({ title, children }) {
             />
           </Link>
         </div>
-        <p className="text-xs leading-9 tracking-wide text-gray-200 font-thin">
+        <p className="text-xs leading-9 tracking-wide text-gray-200 font-base">
           &copy; {new Date().toLocaleDateString('en-us', { year: 'numeric' })}{' '}
           IridiumGPU, ALL RIGHTS RESERVED.
         </p>

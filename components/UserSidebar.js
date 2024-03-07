@@ -46,6 +46,7 @@ function UserSidebar({ title, children }) {
       <Head>
         <title>{title ? 'IridiumGPU | ' + title : 'IridiumGPU '}</title>
         <meta name="description" content="Cloud GPU" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <div className="flex h-full">
         <Sidebar
@@ -275,7 +276,7 @@ function UserSidebar({ title, children }) {
                 />
               </Link>
             </div>
-            <p className="text-xs leading-9 tracking-wide text-gray-200 font-thin">
+            <p className="text-xs leading-9 tracking-wide text-gray-200 font-base">
               &copy;{' '}
               {new Date().toLocaleDateString('en-us', { year: 'numeric' })}{' '}
               IridiumGPU, ALL RIGHTS RESERVED.

@@ -147,7 +147,11 @@ export default function SingleVolume() {
     <UserSidebar title="Volume Details">
       <div className="h-full py-5 px-3 my-auto">
         {Object.keys(singleVolume).length === 0 ? (
-          <div className="spinner-border" role="status"></div>
+          <div
+            className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-primary-dark rounded-full dark:text-primary-dark"
+            role="status"
+            aria-label="loading"
+          ></div>
         ) : (
           <>
             <h1 className="mb-8 text-2xl font-bold">Volume Details</h1>
@@ -184,7 +188,7 @@ export default function SingleVolume() {
                       style={{
                         border: '1px solid transparent',
                         borderRadius: '0.5em',
-                        background: '#0f1624',
+                        background: '#05052D',
                         display: 'flex',
                         alignItems: 'center',
                         color: 'white',
@@ -258,9 +262,7 @@ export default function SingleVolume() {
         </footer>
       </Modal>
       <Modal open={openDelete} onClose={onCloseDeleteModal} center>
-        <h1 className="pt-10  pb-5 font-extrabold">
-          Delete Volume
-        </h1>
+        <h1 className="pt-10  pb-5 font-extrabold">Delete Volume</h1>
         <p>Are you sure you want to delete this volume?</p>
         <footer className="float-right mt-6 space-x-6">
           <button
@@ -277,7 +279,6 @@ export default function SingleVolume() {
               deleteVolume();
               onCloseDeleteModal();
             }}
-            
           >
             Proceed
           </button>

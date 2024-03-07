@@ -306,7 +306,11 @@ export default function SingleServer() {
     <UserSidebar title="Server Details">
       <div className="h-full py-5 px-3 my-auto">
         {Object.keys(singleServer).length === 0 ? (
-          <div className="spinner-border" role="status"></div>
+          <div
+            className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-primary-dark rounded-full dark:text-primary-dark"
+            role="status"
+            aria-label="loading"
+          ></div>
         ) : (
           <>
             <h1 className="mb-8 text-2xl font-bold">Server Details</h1>
@@ -343,7 +347,7 @@ export default function SingleServer() {
                       style={{
                         border: '1px solid transparent',
                         borderRadius: '0.5em',
-                        background: '#0f1624',
+                        background: '#05052D',
                         display: 'flex',
                         alignItems: 'center',
                         color: 'white',

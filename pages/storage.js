@@ -51,11 +51,13 @@ export default function Storage() {
 
   return (
     <UserSidebar title="Volumes">
-      <div className="h-screen py-5 px-3 my-auto">
-        {volumes.length === 0 ? (
-          <>
-            <div className="spinner-border" role="status"></div>
-          </>
+      <div className="h-full md:h-screen py-5 px-3 my-auto">
+      {volumes?.images?.volumes?.length === undefined ? (
+         <div
+         className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-primary-dark rounded-full dark:text-primary-dark"
+         role="status"
+         aria-label="loading"
+       ></div>
         ) : (
           <>
             <h1 className="mb-8 text-2xl font-bold">Volumes</h1>

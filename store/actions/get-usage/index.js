@@ -20,13 +20,13 @@ export const getUsageCleanup = () => ({
   type: types.GET_USAGE_CLEANUP,
 });
 
-export const getUsage = () => async (dispatch) => {
+export const getUsage = (payload) => async (dispatch) => {
   try {
     dispatch(getUsageStart());
     const requestObj = {
       path: `/usage`,
-      method: 'GET',
-      // data: payload,
+      method: 'POST',
+      data: payload,
     };
     const data = await AxiosCall(requestObj);
     dispatch(getUsageSuccess(data));

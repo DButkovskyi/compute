@@ -25,13 +25,16 @@ export default function Profile() {
       dispatch(getProfileCleanup());
     }
   }, [dispatch, getProfileState]);
+
   return (
     <UserSidebar title="Profile">
       <div className="h-screen py-5 px-3 my-auto">
         {profile.length === 0 ? (
-          <>
-            <div className="spinner-border" role="status"></div>
-          </>
+          <div
+            className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-primary-dark rounded-full dark:text-primary-dark"
+            role="status"
+            aria-label="loading"
+          ></div>
         ) : (
           <>
             <h1 className="mb-8 text-2xl font-bold">Profile</h1>
@@ -51,7 +54,7 @@ export default function Profile() {
                   style={{
                     border: '1px solid transparent',
                     borderRadius: '0.5em',
-                    background: '#0f1624',
+                    background: '#05052D',
                     display: 'flex',
                     alignItems: 'center',
                     color: 'white',
@@ -107,7 +110,7 @@ export default function Profile() {
                   style={{
                     border: '1px solid transparent',
                     borderRadius: '0.5em',
-                    background: '#0f1624',
+                    background: '#05052D',
                     display: 'flex',
                     alignItems: 'center',
                     color: 'white',

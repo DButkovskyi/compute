@@ -51,10 +51,12 @@ export default function Servers() {
   return (
     <UserSidebar title="Servers">
       <div className="h-screen py-5 px-3 my-auto">
-        {servers.length === 0 ? (
-          <>
-            <div className="spinner-border" role="status"></div>
-          </>
+        {servers?.servers?.length === undefined ? (
+         <div
+         className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-primary-dark rounded-full dark:text-primary-dark"
+         role="status"
+         aria-label="loading"
+       ></div>
         ) : (
           <>
             <h1 className="mb-8 text-2xl font-bold">Servers</h1>

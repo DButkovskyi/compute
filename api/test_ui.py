@@ -499,7 +499,7 @@ def getProjectUsage(project_id, rows_to_return):
             connection.close()
     return records
 
-@app.route('/usage', methods=['GET'])
+@app.route('/usage', methods=['POST'])
 @require_data('project_id', 'rows_to_return')
 def get_usage():
 

@@ -100,122 +100,131 @@ export default function Request() {
     }
   }, [createServerState, dispatch, router]);
 
+  
   return (
     <UserSidebar title="Request">
       <div className="h-screen py-5 px-3 my-auto">
-        <>
-          <h1 className="mb-8 text-2xl font-bold">Request VM Creation</h1>
-          <form className="shadow-md bg-gray-50 rounded-md p-7 mb-8 w-full lg:w-3/4 xl:2/4 2xl:1/3">
-            <Formik
-              initialValues={{
-                name: '',
-                key_name: '',
-                imageRef: '',
-                flavorRef: '',
-              }}
-              onSubmit={(values, { setSubmitting }) => {
-                dispatch(createServer(values));
-                setSubmitting(false);
-              }}
-              validationSchema={validationSchema}
-              innerRef={formikRef}
-            >
-              {({
-                handleChange,
-                handleSubmit,
-                values,
-                errors,
-                touched,
-                isValid,
-                handleBlur,
-              }) => (
-                <div className="text-xs lg:text-base">
-                  <div className="mb-4">
-                    <label>VM name</label>
-                    <input
-                      name="name"
-                      type="text"
-                      value={values.name}
-                      onChange={handleChange('name')}
-                      onBlur={handleBlur('name')}
-                      className="text-xs lg:text-base"
-                    />
-                    {errors.name && touched.name ? (
-                      <p style={{ color: 'red' }}>{errors.name}</p>
-                    ) : null}
-                  </div>
+        {(keyPairs.length === 0 && images.length === 0 && flavors.length === 0) ? (
+          <div
+            className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-primary-dark rounded-full dark:text-primary-dark"
+            role="status"
+            aria-label="loading"
+          ></div>
+        ) : (
+          <>
+            <h1 className="mb-8 text-2xl font-bold">Request VM Creation</h1>
+            <form className="shadow-md bg-gray-50 rounded-md p-7 mb-8 w-full lg:w-3/4 xl:2/4 2xl:1/3">
+              <Formik
+                initialValues={{
+                  name: '',
+                  key_name: '',
+                  imageRef: '',
+                  flavorRef: '',
+                }}
+                onSubmit={(values, { setSubmitting }) => {
+                  dispatch(createServer(values));
+                  setSubmitting(false);
+                }}
+                validationSchema={validationSchema}
+                innerRef={formikRef}
+              >
+                {({
+                  handleChange,
+                  handleSubmit,
+                  values,
+                  errors,
+                  touched,
+                  isValid,
+                  handleBlur,
+                }) => (
+                  <div className="text-xs lg:text-base">
+                    <div className="mb-4">
+                      <label>VM name</label>
+                      <input
+                        name="name"
+                        type="text"
+                        value={values.name}
+                        onChange={handleChange('name')}
+                        onBlur={handleBlur('name')}
+                        className="text-xs lg:text-base"
+                      />
+                      {errors.name && touched.name ? (
+                        <p style={{ color: 'red' }}>{errors.name}</p>
+                      ) : null}
+                    </div>
 
-                  <div className="mb-4">
-                    <label>Key Name</label>
-                    <select
-                      name="key_name"
-                      type="text"
-                      value={values.key_name}
-                      onChange={handleChange('key_name')}
-                      onBlur={handleBlur('key_name')}
-                      className="text-xs lg:text-base"
+                    <div className="mb-4">
+                      <label>Key Name</label>
+                      <select
+                        name="key_name"
+                        type="text"
+                        value={values.key_name}
+                        onChange={handleChange('key_name')}
+                        onBlur={handleBlur('key_name')}
+                        className="text-xs lg:text-base"
+                      >
+                        <option value="">select</option>
+                        {keyPairs?.flavors?.keypairs.map((data, i) => (
+                          <option value={data.keypair.name} key={i}>
+                            {data.keypair.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="mb-4">
+                      <label>Image</label>
+                      <select
+                        name="imageRef"
+                        type="text"
+                        value={values.imageRef}
+                        onChange={handleChange('imageRef')}
+                        onBlur={handleBlur('imageRef')}
+                        className="text-xs lg:text-base"
+                      >
+                        <option value="">select</option>
+                        {images?.images?.images.map((data, i) => (
+                          <option value={data.id} key={i}>
+                            {data.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="mb-10">
+                      <label>Flavor</label>
+                      <select
+                        name="flavorRef"
+                        type="text"
+                        value={values.flavorRef}
+                        onChange={handleChange('flavorRef')}
+                        onBlur={handleBlur('flavorRef')}
+                        className="text-xs lg:text-base"
+                      >
+                        <option value="">select</option>
+                        {flavors?.flavors?.flavors.map((data, i) => (
+                          <option value={data.id} key={i}>
+                            Name: {data.name} Disk: {data.disk} Ram: {data.ram}{' '}
+                            Vcpus: {data.vcpus}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
+                      onClick={handleSubmit}
+                      disabled={!isValid || createServerState.isLoading}
                     >
-                      <option value="">select</option>
-                      {keyPairs?.flavors?.keypairs.map((data, i) => (
-                        <option value={data.keypair.name} key={i}>
-                          {data.keypair.name}
-                        </option>
-                      ))}
-                    </select>
+                      Submit
+                    </button>
                   </div>
-
-                  <div className="mb-4">
-                    <label>Image</label>
-                    <select
-                      name="imageRef"
-                      type="text"
-                      value={values.imageRef}
-                      onChange={handleChange('imageRef')}
-                      onBlur={handleBlur('imageRef')}
-                      className="text-xs lg:text-base"
-                    >
-                      <option value="">select</option>
-                      {images?.images?.images.map((data, i) => (
-                        <option value={data.id} key={i}>
-                          {data.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="mb-10">
-                    <label>Flavor</label>
-                    <select
-                      name="flavorRef"
-                      type="text"
-                      value={values.flavorRef}
-                      onChange={handleChange('flavorRef')}
-                      onBlur={handleBlur('flavorRef')}
-                      className="text-xs lg:text-base"
-                    >
-                      <option value="">select</option>
-                      {flavors?.flavors?.flavors.map((data, i) => (
-                        <option value={data.id} key={i}>
-                          Name: {data.name} Disk: {data.disk} Ram: {data.ram}{' '}
-                          Vcpus: {data.vcpus}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="border-black text-white hover:bg-black px-3 py-2 rounded-md bg-zinc-900 text-xs lg:text-base font-medium"
-                    onClick={handleSubmit}
-                    disabled={!isValid || createServerState.isLoading}
-                  >
-                    Submit
-                  </button>
-                </div>
-              )}
-            </Formik>
-          </form>
-        </>
+                )}
+              </Formik>
+            </form>
+          </>
+        )}
       </div>
       <ToastContainer
         position="top-center"
