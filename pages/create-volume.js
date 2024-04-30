@@ -59,7 +59,7 @@ export default function Request() {
 
   return (
     <UserSidebar title="Create Volume">
-      <div className="h-screen py-5 px-3 my-auto">
+      <div className="min-h-screen py-5 px-3 my-auto">
         <>
           <h1 className="mb-8 text-2xl font-bold">Request Volume Creation</h1>
           <form className="shadow-md bg-gray-50 rounded-md p-7 mb-8">
