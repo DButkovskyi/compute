@@ -304,7 +304,7 @@ export default function SingleServer() {
 
   return (
     <UserSidebar title="Server Details">
-      <div className="h-full py-5 px-3 my-auto">
+      <div className="min-h-screen py-5 px-3 my-auto w-full xl:max-w-screen-lg">
         {Object.keys(singleServer).length === 0 ? (
           <div
             className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-primary-dark rounded-full dark:text-primary-dark"

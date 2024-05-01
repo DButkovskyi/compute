@@ -64,7 +64,7 @@ export default function Login() {
 
   return (
     <Layout title="Login">
-      <div className="max-w-6xl xl:max-w-2xl mx-auto px-8 mb-10 mt-24 h-screen">
+      <div className="max-w-6xl xl:max-w-2xl mx-auto px-8 mb-10 mt-24 min-h-screen">
         <form className="shadow-md bg-gray-50 rounded-md p-7">
           <h1 className="mb-4 text-2xl font-bold">Login</h1>
 

@@ -5,10 +5,10 @@ import Link from 'next/link';
 export default function Deploy() {
   return (
     <UserSidebar title="Deploy">
-      <div className="h-full xl:h-screen py-5 px-3 my-auto">
+      <div className="min-h-screen py-5 px-3 my-auto">
         <h1 className="mb-8 text-2xl font-bold">Deploy</h1>
 
-        <div className="text-xs lg:text-base grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="text-xs lg:text-base grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5">
           <div className="shadow-md mr-7 bg-gray-50 rounded-md p-7 mb-8 text-center grid gap-4">
             <div className="w-full flex flex-wrap items-center justify-between">
               <p className="font-bold">Name</p>
